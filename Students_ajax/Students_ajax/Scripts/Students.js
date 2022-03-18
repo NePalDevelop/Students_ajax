@@ -130,6 +130,7 @@ function clearTextBox() {
 }
 function validate() {
     var isValid = true;
+    var pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
     if ($('#Name').val().trim() == "") {
         $('#Name').css('border-color', 'Red');
         isValid = false;
@@ -137,12 +138,13 @@ function validate() {
     else {
         $('#Name').css('border-color', 'lightgrey');
     }
-    if ($('#MailAddress').val().trim() == "") {
-        $('#MailAddress').css('border-color', 'Red');
-        isValid = false;
+    if ($('#MailAddress').val().match(pattern)) {
+        $('#MailAddress').css('border-color', 'lightgrey')
+
     }
     else {
-        $('#MailAddress').css('border-color', 'lightgrey');
+        $('#MailAddress').css('border-color', 'Red');
+        isValid = false;
     }
     return isValid;
 }
